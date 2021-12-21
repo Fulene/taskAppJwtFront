@@ -1,0 +1,36 @@
+<div class="login-container">
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <h3>Authentication</h3>
+    <div class="form-content">
+      <!-- name -->
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" formControlName="name" />
+          <button
+            class="btn-suffix"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            *ngIf="f().name?.value"
+            (click)="f().name?.reset()"
+          >
+            x
+          </button>
+        </mat-form-field>
+      </div>
+
+      <!-- password -->
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>password</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button type="button">Register new user</button>
+      <button>Login</button>
+    </div>
+  </form>
+</div>
