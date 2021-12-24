@@ -13,14 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'tasks', component: TasksComponent },
-  { path: 'new-task', component: NewTaskComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +24,6 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
 
     FormsModule,
     ReactiveFormsModule,

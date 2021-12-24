@@ -7,4 +7,8 @@ export class User {
   constructor(args?: Partial<User>) {
     if (args) Object.assign(this, args);
   }
+
+  isAdmin() {
+    return this.roles.includes('ADMIN');
+  }
 }

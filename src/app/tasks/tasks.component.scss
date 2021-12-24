@@ -1,0 +1,50 @@
+@use "sass:color";
+@use "sass:math";
+
+.tasks-container {
+  padding: 0 60px;
+  .header {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      font-weight: 500;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+  .tasks-list {
+    box-shadow: 0 0 25px #44444450;
+    border-radius: 3px;
+    color: #444;
+    .tab-header {
+      display: flex;
+      align-items: center;
+      padding: 5px 30px;
+      height: 40px;
+      span {
+        font-weight: 500;
+      }
+    }
+    .tab-body {
+      .line {
+        height: 40px;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #dbdbdb;
+        background-color: white;
+      }
+      .line:nth-child(even) {
+        background-color: color.adjust(#ededed, $alpha: -0.3); // <=> #ededed70
+      }
+    }
+    .id {
+      width: 10%;
+    }
+    .name {
+      flex: 1;
+    }
+  }
+}

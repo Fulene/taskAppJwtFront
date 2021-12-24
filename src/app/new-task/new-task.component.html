@@ -1,1 +1,26 @@
-<p>new-task works!</p>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <h3>New task</h3>
+    <div class="form-content">
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Task name</mat-label>
+          <input matInput type="text" formControlName="name" />
+          <button
+            class="btn-suffix"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            *ngIf="f().name?.value"
+            (click)="f().name?.reset()"
+          >
+            x
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button>Save</button>
+    </div>
+  </form>
+</div>

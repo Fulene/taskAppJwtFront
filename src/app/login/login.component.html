@@ -1,4 +1,4 @@
-<div class="login-container">
+<div class="container">
   <form [formGroup]="form" (ngSubmit)="login()">
     <h3>Authentication</h3>
     <div class="form-content">
@@ -29,8 +29,8 @@
       </div>
     </div>
     <div class="btn-container">
-      <button type="button">Register new user</button>
       <button>Login</button>
+      <button routerLink="/register" type="button">Register new user</button>
     </div>
   </form>
 </div>
