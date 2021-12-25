@@ -21,6 +21,7 @@
         <span class="name">{{ task.name }}</span>
         <button
           type="button"
+          *ngIf="currentUser.isAdmin()"
           (click)="removeTask(task)"
           class="delete btn-warn"
         >
