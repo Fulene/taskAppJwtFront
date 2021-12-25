@@ -1,5 +1,8 @@
+import { AuthenticationService } from './../services/authentication.service';
+import { TasksService } from './../services/tasks.service';
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -9,15 +12,25 @@ import { Task } from '../models/task';
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
 
-  constructor() {}
+  constructor(
+    private tasksService: TasksService,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.tasks = [
-      { id: 0, name: 'T1' },
-      { id: 0, name: 'T2' },
-      { id: 0, name: 'T3' },
-      { id: 0, name: 'T4' },
-      { id: 0, name: 'T5' },
-    ];
+    if (!this.authenticationService.isAuthenticated())
+      this.router.navigateByUrl('/login');
+    this.loadTasks();
+  }
+
+  loadTasks(): void {
+    this.tasksService.loadTasks().subscribe(
+      (res) => (this.tasks = res),
+      (err) => {
+        this.authenticationService.logout();
+        this.router.navigateByUrl('/login');
+      }
+    );
   }
 }

@@ -33,4 +33,7 @@
       <button routerLink="/register" type="button">Register new user</button>
     </div>
   </form>
+  <div class="error" *ngIf="isError">
+    <span>Authentication failed</span>
+  </div>
 </div>
