@@ -2,7 +2,7 @@
 @use "sass:math";
 
 .tasks-container {
-  padding: 0 60px;
+  padding: 0 60px 50px;
   .header {
     margin-bottom: 10px;
     display: flex;
@@ -38,6 +38,7 @@
         align-items: center;
         border-top: 1px solid #dbdbdb;
         background-color: white;
+        transition: 200ms;
       }
       .line:nth-child(even) {
         background-color: color.adjust(#ededed, $alpha: -0.3); // <=> #ededed70
@@ -48,6 +49,9 @@
     }
     .name {
       flex: 1;
+    }
+    .delete {
+      transform: scale(0.9);
     }
   }
 }

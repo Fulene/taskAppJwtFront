@@ -3,6 +3,7 @@ import { TasksService } from './../services/tasks.service';
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-tasks',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
+  currentUser!: User;
 
   constructor(
     private tasksService: TasksService,
@@ -19,6 +21,7 @@ export class TasksComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.currentUser = this.authenticationService.getCurrentUser()!;
     if (!this.authenticationService.isAuthenticated())
       this.router.navigateByUrl('/login');
     this.loadTasks();
@@ -32,5 +35,13 @@ export class TasksComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
     );
+  }
+
+  removeTask(task: Task) {
+    this.tasksService
+      .removeTask(task.id!)
+      .subscribe(
+        () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+      );
   }
 }

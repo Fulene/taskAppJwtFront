@@ -14,7 +14,7 @@ export class TasksService extends BaseService {
   }
 
   loadTasks(): Observable<Task[]> {
-    if (!this.jwtToken) this.refreshReqOptions();
+    this.refreshReqOptions();
     return this.http
       .get(this.host + '/tasks', this.options)
       .pipe(
@@ -22,5 +22,17 @@ export class TasksService extends BaseService {
           res._embedded.tasks.map((t: Partial<Task> | undefined) => new Task(t))
         )
       );
+  }
+
+  createTask(taskName: string) {
+    this.refreshReqOptions();
+    return this.http
+      .post(this.host + '/tasks', new Task({ name: taskName }), this.options)
+      .pipe(map((res: any) => new Task(res)));
+  }
+
+  removeTask(taskId: number) {
+    this.refreshReqOptions();
+    return this.http.delete(this.host + '/tasks/' + taskId, this.options);
   }
 }

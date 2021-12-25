@@ -1,14 +1,16 @@
 export class User {
-  id?: number;
   name?: string;
   password?: string;
-  roles: string[] = [];
+  roles: any[] = [];
 
-  constructor(args?: Partial<User>) {
-    if (args) Object.assign(this, args);
+  constructor(args?: any) {
+    if (args) {
+      this.name = args.sub;
+      this.roles = args.roles;
+    }
   }
 
   isAdmin() {
-    return this.roles.includes('ADMIN');
+    return this.roles.some((r) => r.authority === 'ADMIN');
   }
 }

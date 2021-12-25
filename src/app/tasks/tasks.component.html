@@ -1,7 +1,12 @@
 <div class="tasks-container">
   <div class="header">
     <h3>Task list</h3>
-    <button routerLink="/new-task" type="button" class="btn-bis" *ngIf="true">
+    <button
+      routerLink="/new-task"
+      type="button"
+      class="btn-bis"
+      *ngIf="currentUser.isAdmin()"
+    >
       New task
     </button>
   </div>
@@ -14,6 +19,13 @@
       <div *ngFor="let task of tasks" class="line">
         <span class="id">{{ task.id }}</span>
         <span class="name">{{ task.name }}</span>
+        <button
+          type="button"
+          (click)="removeTask(task)"
+          class="delete btn-warn"
+        >
+          Delete
+        </button>
       </div>
     </div>
   </div>
