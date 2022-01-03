@@ -30,4 +30,11 @@
       </div>
     </div>
   </div>
+
+  <div class="test">
+    <button (click)="test()" type="button">Test</button>
+    <div *ngFor="let d of finalData">
+      {{ d.year }} : {{ d.rate }}
+    </div>
+  </div>
 </div>

@@ -13,6 +13,7 @@ import { User } from '../models/user';
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
   currentUser!: User;
+  finalData: { year: number; rate: any; }[] = [];
 
   constructor(
     private tasksService: TasksService,
@@ -43,5 +44,20 @@ export class TasksComponent implements OnInit {
       .subscribe(
         () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
       );
+  }
+
+  test() {
+    this.tasksService.test().subscribe((res: any) => {
+      let startDate = 2000;
+      // let endDate = 2020;
+      let i = 0;
+      Object.entries(res.dataSets[0].observations).forEach((arr: any[]) => {
+        if (arr[0].startsWith("0"))
+          this.finalData.push({year: startDate + i, rate: arr[1][0]})
+        i++;
+      })
+      this.finalData = [...this.finalData];
+      console.log(this.finalData)
+    });
   }
 }
