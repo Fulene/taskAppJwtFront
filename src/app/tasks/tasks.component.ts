@@ -49,7 +49,6 @@ export class TasksComponent implements OnInit {
   test() {
     this.tasksService.test().subscribe((res: any) => {
       let startDate = 2000;
-      // let endDate = 2020;
       let i = 0;
       Object.entries(res.dataSets[0].observations).forEach((arr: any[]) => {
         if (arr[0].startsWith("0"))
@@ -57,7 +56,6 @@ export class TasksComponent implements OnInit {
         i++;
       })
       this.finalData = [...this.finalData];
-      console.log(this.finalData)
     });
   }
 }
