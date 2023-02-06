@@ -1,18 +1,18 @@
 <div class="app-container">
-  <nav>
-    <h3>Task App (JWT demo)</h3>
-    <div>
-      <button routerLink="/tasks" type="button">Tasks</button>
-      <button
-        (click)="logout()"
-        type="button"
-        class="btn-warn"
-        *ngIf="authenticationService.isAuthenticated()"
-      >
-        Logout
-      </button>
-    </div>
-  </nav>
+<!--  <nav>-->
+<!--    <h3>Task App (JWT demo)</h3>-->
+<!--    <div>-->
+<!--      <button routerLink="/tasks" type="button">Tasks</button>-->
+<!--      <button-->
+<!--        (click)="logout()"-->
+<!--        type="button"-->
+<!--        class="btn-warn"-->
+<!--        *ngIf="authenticationService.isAuthenticated()"-->
+<!--      >-->
+<!--        Logout-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </nav>-->
   <main>
     <router-outlet></router-outlet>
   </main>

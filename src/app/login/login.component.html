@@ -1,39 +1,40 @@
-<div class="container">
-  <form [formGroup]="form" (ngSubmit)="login()">
-    <h3>Authentication</h3>
-    <div class="form-content">
-      <!-- name -->
-      <div>
-        <mat-form-field appearance="legacy">
-          <mat-label>Username</mat-label>
-          <input matInput type="text" formControlName="name" />
-          <button
-            class="btn-suffix"
-            matSuffix
-            mat-icon-button
-            aria-label="Clear"
-            *ngIf="f().name?.value"
-            (click)="f().name?.reset()"
-          >
-            x
-          </button>
-        </mat-form-field>
-      </div>
-
-      <!-- password -->
-      <div>
-        <mat-form-field appearance="legacy">
-          <mat-label>password</mat-label>
-          <input matInput type="password" formControlName="password" />
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="btn-container">
-      <button>Login</button>
-      <button routerLink="/register" type="button">Register new user</button>
-    </div>
-  </form>
-  <div class="error" *ngIf="isError">
-    <span>Authentication failed</span>
-  </div>
-</div>
+<header>
+  <button (click)="onClickLogo()">LOGO</button>
+  <nav>
+    <ul>
+      <li><a href="https://www.netflix.com/browse" target="_blank">Nos produits</a></li>
+      <li><a href="#">Contacts</a></li>
+      <li><a href="#">Aide</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section id="h1-parent">
+    <h1 id="test">Mon gros titre</h1>
+    <img src="https://fr.m.wikipedia.org/wiki/Fichier:Flag_of_Palestine.svg" alt="Palestine">
+  </section>
+  <section>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem, exercitationem nemo nihil perspiciatis
+      qui ullam voluptates voluptatum. Ab aliquam commodi cum dignissimos est fuga fugit officia omnis ratione
+      voluptatibus.</p>
+  </section>
+  <section>
+    <ul>
+      <li>com</li>
+      <li>com</li>
+      <li>com</li>
+      <li>com</li>
+      <li>com</li>
+      <li>com</li>
+    </ul>
+  </section>
+  <section>
+    <img
+      src="https://fr.freepik.com/vecteurs-libre/vector-cartoon-illustration-design-fast-food-restaurant-menu_1215910.htm#query=menu%20pizza&position=0&from_view=keyword"
+      alt="Menu pizza">
+  </section>
+</main>
+<footer>
+  <p>contact: 0509554341</p>
+  <p>copyright tout droit reservés</p>
+</footer>

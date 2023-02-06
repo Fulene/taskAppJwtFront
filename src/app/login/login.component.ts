@@ -25,32 +25,11 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.authenticationService.isAuthenticated())
-      this.router.navigateByUrl('/tasks');
-    this.form = this.fb.group({
-      name: this.fb.control('', Validators.required),
-      password: this.fb.control('', Validators.required),
-    });
+
   }
 
-  f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+  onClickLogo() {
+    alert("MAX !!!!")
   }
 
-  login() {
-    if (this.form.invalid) return;
-
-    let user = new User();
-    user.name = this.f().name.value;
-    user.password = this.f().password.value;
-
-    this.authenticationService.login(user).subscribe(
-      (res) => {
-        let jwtToken = res.headers.get('Authorization');
-        this.authenticationService.saveToken(jwtToken);
-        this.router.navigateByUrl('/tasks');
-      },
-      (err) => (this.isError = true)
-    );
-  }
 }
